@@ -6,19 +6,22 @@ public class LeanApplication {
     private int numberOfCherries = 0;
     private int numberOfBannanas = 0;
     private HashSet apples = new HashSet() {{
-        add("meles");
+        add("mele");
         add("pommes");
         add("apples");
     }};
+    private int numberOfPommes = 0;
+    private int numberOfMeles = 0;
 
     public int process(String fruitName) {
+        incrementPurchasesOf(fruitName);
         return calculateSubtotal(fruitName) - calculateDiscounts();
     }
 
     private int calculateSubtotal(String fruitName) {
+
         if (fruitName.equals("cherries")) {
             subtotal += 75;
-            numberOfCherries++;
         }
 
         if (isApple(fruitName)) {
@@ -27,9 +30,23 @@ public class LeanApplication {
 
         if (fruitName.equals("bananas")) {
             subtotal += 150;
-            numberOfBannanas++;
         }
         return subtotal;
+    }
+
+    private void incrementPurchasesOf(String fruitName) {
+        if (fruitName.equals("cherries")) {
+            numberOfCherries++;
+        }
+        if (fruitName.equals("pommes")) {
+            numberOfPommes++;
+        }
+        if (fruitName.equals("mele")) {
+            numberOfMeles++;
+        }
+        if (fruitName.equals("bananas")) {
+            numberOfBannanas++;
+        }
     }
 
     private boolean isApple(String fruitName) {
@@ -37,9 +54,11 @@ public class LeanApplication {
     }
 
     private int calculateDiscounts() {
-        return (int)(
+        return (int) (
                 (Math.floor(numberOfCherries / 2)) * 20 +
-                (Math.floor(numberOfBannanas / 2)) * 150
+                        (Math.floor(numberOfMeles / 2)) * 50 +
+                        (Math.floor(numberOfPommes / 3)) * 100 +
+                        (Math.floor(numberOfBannanas / 2)) * 150
         );
     }
 

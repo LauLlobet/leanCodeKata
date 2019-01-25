@@ -26,4 +26,16 @@ public class ApplicationFeature {
         assertThat(application.process("bananas"),is(380));
         assertThat(application.process("apples"),is(480));
     }
+
+    @Test
+    public void iteration_5() {
+        assertThat(application.process("mele"),is(100));
+        assertThat(application.process("pommes"),is(200));
+        assertThat(application.process("pommes"),is(300));
+        assertThat(application.process("apples"),is(400));
+        assertThat(application.process("pommes"),is(400));
+        assertThat(application.process("mele"),is(450));
+        assertThat(application.process("cherries"),is(525));
+        assertThat(application.process("cherries"),is(580));
+    }
 }
