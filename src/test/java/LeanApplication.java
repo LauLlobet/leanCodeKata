@@ -19,15 +19,12 @@ public class LeanApplication {
     }
 
     private int calculateSubtotal(String fruitName) {
-
         if (fruitName.equals("cherries")) {
             subtotal += 75;
         }
-
         if (isApple(fruitName)) {
             subtotal += 100;
         }
-
         if (fruitName.equals("bananas")) {
             subtotal += 150;
         }
@@ -56,7 +53,7 @@ public class LeanApplication {
     private int calculateDiscounts() {
         return (int) (
                 (Math.floor(numberOfCherries / 2)) * 20 +
-                        (Math.floor(numberOfMeles / 2)) * 50 +
+                        (Math.floor(numberOfMeles / 2)) * 100 +
                         (Math.floor(numberOfPommes / 3)) * 100 +
                         (Math.floor(numberOfBannanas / 2)) * 150
         );
@@ -68,7 +65,7 @@ public class LeanApplication {
         String input = "";
         while (!"exit".equals(input)) {
             input = scanner.next();
-            System.out.println(input + " => " + app.process(input));
+            System.out.println(input + " => " + app.processCSV(input));
         }
     }
 
